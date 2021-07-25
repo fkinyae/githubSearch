@@ -1,8 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Math&display=swap');
+.container {
+    background-color: khaki;
+    font-family: 'STIX Two Math', serif;
+    
+}
+
 button {
     margin-top: 10px;
 }
 
 #searching {
     margin-top: 40px;
-    width: 35%;
+    width: 90%;
+}
+
+#profile {
+    height: 105px;
+    width: 105px;
 }
