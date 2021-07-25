@@ -27,11 +27,11 @@ export class UsersService {
             avatar_url: string;
      }
       let api = environment.apiUrl + '/' +username + '?access_token=' + environment.apiKey;
-      console.log(api)
+      
 
       
-      const promise = new Promise((resolve) => {
-        this.http.get<ApiResponse>(api).toPromise().then(getResponse =>  (response:any) => {
+      let promise = new Promise((resolve ,  reject) => {
+        this.http.get<ApiResponse>(api).toPromise().then(  (response:any) => {
           this.users.html_url = response.html_url;
           this.users.description = response.description;
           this.users.created_at = response.created_at;
@@ -40,8 +40,15 @@ export class UsersService {
           this.users.followers = response.followers;
           this.users.following = response.following;
           this.users.avatar_url = response.avatar_url;
-        },);
-    });
+      console.log(response)
+
+          resolve(this.users);
+        },
+        error => {
+          
+          reject(error);
+        })
+    })
     return promise;
 
 }
