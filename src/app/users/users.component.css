@@ -39,8 +39,12 @@ margin: 15px;
 margin-left: 25px;
 }
 
-#dd {
+#dd , #bb {
     color: green;
     font-weight: bold;
     font-style: italic;
+}
+
+#dada {
+    font-weight: bold;
 }
