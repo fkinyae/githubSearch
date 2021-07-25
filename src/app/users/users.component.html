@@ -1,6 +1,5 @@
 <div class="container">
     <ng-progress></ng-progress>
-    <h3 class="text-center"> Github Search </h3>
 <div class="row">
     <div class="col-md-4">
         <div class="card bg-light mb-3" id="nyc">
@@ -21,9 +20,9 @@
                     <img src={{users.avatar_url}} class="card-img" alt="...">
                   </div>
                   <div class="col">
-                     <div class="card-header">Name:  {{ users.name }} {{ users. login }} </div>
+                     <div class="card-header">Name:  {{ users.name | titlecase }} {{ users. login | titlecase}} </div>
                      <div class="card-body">
-                       <p class="card-title">Repositories: {{ users.public_repos }} </p>
+                       <p class="card-title">Repositories: {{ users.public_repos  }} </p>
                        <p class="card-text"> Date Created: {{ users.created_at | date}} </p>
                        <button type="button" class="btn btn-outline-primary"> Followers: {{ users.followers }}  Following: {{ users.following }}  </button>
                      </div>
@@ -43,11 +42,14 @@
 
 <div class="row">
     <div class="card bg-light mb-3" id="myc" style="max-width: 18rem;" *ngFor = 'let repo of myRepos.newRepository' >
-        <div class="card-header" style="font-weight: bold;">Repo Name: {{ repo.name}} </div>
+        <div class="card-header" style="font-weight: bold;">Repo Name: {{ repo.name | titlecase }} </div>
         <div class="card-body">
             <a type="button" class="btn btn-success btn-sm" href="{{repo.html_url}}" target="_blank" id="btl">Github Link </a>
-          <p class="card-text">Description: {{ repo.description }} </p>
-          <p class="card-text" id="dd">Date Created: {{ repo.created_at | date}} </p>
+          <p class="card-text" id="bb"> Description:</p> {{ repo.description }} 
+          <div id="dada">
+            Date Created: 
+          </div>
+          <p class="card-text" id="dd">{{ repo.created_at | date}} </p>
         </div>
       </div>
 
