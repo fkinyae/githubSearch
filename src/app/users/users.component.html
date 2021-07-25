@@ -1,57 +1,55 @@
 <div class="container">
+    <ng-progress></ng-progress>
     <h3 class="text-center"> Github Search </h3>
 <div class="row">
     <div class="col-md-4">
-        <div class="shadow-lg p-3 mb-5 bg-white rounded">
-            <form class="form-inline">
+        <div class="card bg-light mb-3" id="nyc">
+            <form class="form-inline" >
                 <div class="form-group">
+                    <p style="font-weight: bold;">Search By UserName: </p>
                     <input type="search"  class="form-control" placeholder="Enter username to search"  id="searching"  #search >
-        
                 </div>
                 <button type="button"  class="btn btn-primary"   (click) = "doSearch(search.value)" >Search</button>
-        
             </form>
-    
         </div>
 
     </div>
+    <div  class="col-md-8"  >
+        <div class="card bg-light mb-3" id="myc" >
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <img src={{users.avatar_url}} class="card-img" alt="...">
+                  </div>
+                  <div class="col">
+                     <div class="card-header">Name:  {{ users.name }} {{ users. login }} </div>
+                     <div class="card-body">
+                       <p class="card-title">Repositories: {{ users.public_repos }} </p>
+                       <p class="card-text"> Date Created: {{ users.created_at | date}} </p>
+                       <button type="button" class="btn btn-outline-primary"> Followers: {{ users.followers }}  Following: {{ users.following }}  </button>
+                     </div>
+                  </div>
+            </div>     
+         </div>
+    </div>
 
-    <div class="col-md-3">
+
         
-        <div class="shadow-lg p-3 mb-5 bg-white rounded">
-            <h6 class="table-striped"> UserName: {{ users.login }} </h6>
-                <div>
-                    <img src= {{users.avatar_url}}  class="rounded" alt="" id="profile">        
-            </div>
-    </div>
-</div>
-
-    <div class="col-md-5">
-        <div class="shadow-lg p-3 mb-5 bg-white rounded">
-            <div>
-                Followers: {{ users.followers}}
-            </div>
-            <div>
-                Following: {{ users.following }}
-            </div>
-            <div>
-                Date Created : {{ users.created_at | date }}
-            </div>
-            <div>
-                Repositories: {{ users.public_repos}}
-            </div>
-        </div>
-    </div>
 
 </div>
-<hr>
 <div class="row">
-    <ul>
-        <li *ngFor = 'let repo of myRepos.newRepository'>
-            {{  repo.html_url }}
+    
 
-        </li>
-    </ul>
+</div>
+
+<div class="row">
+    <div class="card bg-light mb-3" id="myc" style="max-width: 18rem;" *ngFor = 'let repo of myRepos.newRepository' >
+        <div class="card-header" style="font-weight: bold;">Repo Name: {{ repo.name}} </div>
+        <div class="card-body">
+            <a type="button" class="btn btn-success btn-sm" href="{{repo.html_url}}" target="_blank" id="btl">Github Link </a>
+          <p class="card-text">Description: {{ repo.description }} </p>
+          <p class="card-text" id="dd">Date Created: {{ repo.created_at | date}} </p>
+        </div>
+      </div>
 
 </div>
 </div>
