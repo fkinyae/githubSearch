@@ -40,7 +40,8 @@ export class UsersService {
           this.users.followers = response.followers;
           this.users.following = response.following;
           this.users.avatar_url = response.avatar_url;
-      console.log(response)
+          this.users.bio = response.bio;
+          this.users.name = response.name;
 
           resolve(this.users);
         },
