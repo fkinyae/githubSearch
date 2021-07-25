@@ -1,20 +1,68 @@
-
 <div class="container">
-
-    <form class="form-inline">
-        <div class="form-group">
-            <input type="search"  class="form-control" placeholder="Enter username to search"  id="searching"  #search >
-
+    <h3 class="text-center"> Github Search </h3>
+<div class="row">
+    <div class="col-md-4">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="search"  class="form-control" placeholder="Enter username to search"  id="searching"  #search >
+        
+                </div>
+                <button type="button"  class="btn btn-primary"   (click) = "doSearch(search.value)" >Search</button>
+        
+            </form>
+    
         </div>
-        <button type="button"  class="btn btn-primary"   (click) = "doSearch(search.value)" >Search</button>
 
-    </form>
-
-    <hr>
-    <div>
-<p>  {{  users.login }} </p>   
     </div>
-    <hr>
+
+    <div class="col-md-3">
+        
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <h6 class="table-striped"> UserName: {{ users.login }} </h6>
+                <div>
+                    <img src= {{users.avatar_url}}  class="rounded" alt="" id="profile">        
+            </div>
+    </div>
+</div>
+
+    <div class="col-md-5">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <div>
+                Followers: {{ users.followers}}
+            </div>
+            <div>
+                Following: {{ users.following }}
+            </div>
+            <div>
+                Date Created : {{ users.created_at | date }}
+            </div>
+            <div>
+                Repositories: {{ users.public_repos}}
+            </div>
+        </div>
+    </div>
 
 </div>
+</div>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+    
+
 
