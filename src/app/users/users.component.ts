@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Users } from '../users';
 import {  UsersService } from "../users.service";
+import { Repos } from "../repos";
 
 
 @Component({
@@ -11,19 +12,15 @@ import {  UsersService } from "../users.service";
 export class UsersComponent implements OnInit {
 
   users:any = Users;
+  repos:any = Repos;
   
+  constructor(private userService:  UsersService, public myRepos: UsersService) {}
 
-
-  constructor(private userService:  UsersService) {
-    
-   }
-
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   doSearch(username: string){
  this.userService.getUsers(username);
+ this.myRepos.getRepos(username);
  this.users = this.userService.users;
 this.ngOnInit();
   }
