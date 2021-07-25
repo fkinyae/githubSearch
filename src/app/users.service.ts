@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient  } from "@angular/common/http";
 import { environment } from "../environments/environment";
 import { Users } from "./users";
+import { Repos } from "./repos";
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,38 @@ import { Users } from "./users";
 export class UsersService {
 
   users:any = Users;
+  repos:any = Repos;
+  newRepository: any;
 
   constructor(private http: HttpClient) {
     this.users = new Users("", "","", 0, "",  new Date(), 0, 0);
+    this.repos = new Repos("", "", "", new Date());
+   }
+
+   getRepos (username:string){
+    interface ApiResponse {
+      name: string;
+      description: string;
+      html_url: string;
+      created_at: Date;
+       }
+
+       let api = environment.apiUrl + '/' +username + '/repos?access_token=' + environment.apiKey;
+
+       let promise = new Promise((resolve ,  reject) => {
+        this.http.get<ApiResponse>(api).toPromise().then(  getRepoResponse => {
+          this.newRepository = getRepoResponse;
+            console.log(this.newRepository);
+          resolve(this.newRepository);
+        },
+        error => {
+          
+          reject(error);
+        })
+    })
+    return promise;
+
+
    }
 
    getUsers (username:string){
