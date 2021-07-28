@@ -26,7 +26,7 @@ export class UsersService {
       created_at: Date;
        }
 
-       let api = environment.apiUrl + '/' +username + '/repos?access_token=' + environment.apiKey;
+       let api = environment.apiUrl + '/' +username + '/repos?';
 
        let promise = new Promise((resolve ,  reject) => {
         this.http.get<ApiResponse>(api).toPromise().then(  getRepoResponse => {
@@ -56,7 +56,7 @@ export class UsersService {
             following: number;
             avatar_url: string;
      }
-      let api = environment.apiUrl + '/' +username + '?access_token=' + environment.apiKey;
+      let api = environment.apiUrl + '/' +username ;
       
 
       
@@ -81,6 +81,8 @@ export class UsersService {
         })
     })
     return promise;
+
+    
 
 }
    }
